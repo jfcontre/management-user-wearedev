@@ -46,7 +46,7 @@ Para ello, asegúrate de estar en la raíz del proyecto (donde está el "Dockerf
 
 Una vez construida la imagen, puedes ejecutar el contenedor con:
 
-``sdocker run -d -p 5050:5050 --name user-management-app user-management:1.0``s
+``sdocker run -d -p 5050:5050 --name user-management-app user-management:1.0``
 
 ## Patrones de Diseño Utilizados
 
