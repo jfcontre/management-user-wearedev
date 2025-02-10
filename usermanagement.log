@@ -1,0 +1,232 @@
+2025-02-10T10:18:49.143-05:00  INFO 68322 --- [main] .j.u.r.UserManagementRestControllerTests : Starting UserManagementRestControllerTests using Java 23.0.2 with PID 68322 (started by jhonf in /Users/jhonf/Documents/Proyectos/WeAreDev/user-management-main)
+2025-02-10T10:18:49.145-05:00  INFO 68322 --- [main] .j.u.r.UserManagementRestControllerTests : No active profile set, falling back to 1 default profile: "default"
+2025-02-10T10:18:49.159-05:00 TRACE 68322 --- [main] o.s.w.c.s.GenericWebApplicationContext   : Refreshing org.springframework.web.context.support.GenericWebApplicationContext@1a1d3c1a, started on Mon Feb 10 10:18:49 GMT-05:00 2025
+2025-02-10T10:18:49.453-05:00  INFO 68322 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-02-10T10:18:49.474-05:00  INFO 68322 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 18 ms. Found 3 JPA repository interfaces.
+2025-02-10T10:18:49.599-05:00 TRACE 68322 --- [main] o.s.w.c.s.GenericWebApplicationContext   : No 'messageSource' bean, using [Empty MessageSource]
+2025-02-10T10:18:49.599-05:00 TRACE 68322 --- [main] o.s.w.c.s.GenericWebApplicationContext   : No 'applicationEventMulticaster' bean, using [SimpleApplicationEventMulticaster]
+2025-02-10T10:18:49.639-05:00 DEBUG 68322 --- [main] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2025-02-10T10:18:49.639-05:00  INFO 68322 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-02-10T10:18:49.710-05:00  INFO 68322 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:193b1960-a963-43b9-923f-8a02d43aacde user=SA
+2025-02-10T10:18:49.711-05:00  INFO 68322 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-02-10T10:18:49.720-05:00 DEBUG 68322 --- [main] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2025-02-10T10:18:49.720-05:00 DEBUG 68322 --- [main] o.s.jdbc.datasource.init.ScriptUtils     : Executing SQL script from file [/Users/jhonf/Documents/Proyectos/WeAreDev/user-management-main/target/classes/schema.sql]
+2025-02-10T10:18:49.725-05:00 DEBUG 68322 --- [main] o.s.jdbc.datasource.init.ScriptUtils     : 0 returned as update count for SQL: CREATE TABLE USERM ( id uuid DEFAULT random_uuid() PRIMARY KEY, uname VARCHAR(255) NOT NULL, email VARCHAR(255) NOT NULL, passw VARCHAR(500) NOT NULL, created_at timestamp not null default current_timestamp, updated_at timestamp null default current_timestamp, last_login timestamp null default current_timestamp, is_active boolean not null default true )
+2025-02-10T10:18:49.730-05:00 DEBUG 68322 --- [main] o.s.jdbc.datasource.init.ScriptUtils     : 0 returned as update count for SQL: CREATE TABLE PHONE ( id uuid DEFAULT random_uuid() PRIMARY KEY, pnumber VARCHAR(255), city_code VARCHAR(255), country_code VARCHAR(255), user_id UUID NULL, created_at timestamp not null default current_timestamp, updated_at timestamp null default current_timestamp, CONSTRAINT FK_USER_ID FOREIGN KEY (user_id) REFERENCES USERM(id) )
+2025-02-10T10:18:49.730-05:00 DEBUG 68322 --- [main] o.s.jdbc.datasource.init.ScriptUtils     : 0 returned as update count for SQL: CREATE TABLE CONFIGURATIONAPP ( id uuid DEFAULT random_uuid() PRIMARY KEY, name_parameter VARCHAR(255), value_parameter VARCHAR(255) )
+2025-02-10T10:18:49.730-05:00 DEBUG 68322 --- [main] o.s.jdbc.datasource.init.ScriptUtils     : Executed SQL script from file [/Users/jhonf/Documents/Proyectos/WeAreDev/user-management-main/target/classes/schema.sql] in 10 ms.
+2025-02-10T10:18:49.731-05:00 DEBUG 68322 --- [main] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2025-02-10T10:18:49.731-05:00 DEBUG 68322 --- [main] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2025-02-10T10:18:49.731-05:00 DEBUG 68322 --- [main] o.s.jdbc.datasource.init.ScriptUtils     : Executing SQL script from file [/Users/jhonf/Documents/Proyectos/WeAreDev/user-management-main/target/classes/data.sql]
+2025-02-10T10:18:49.732-05:00 DEBUG 68322 --- [main] o.s.jdbc.datasource.init.ScriptUtils     : 3 returned as update count for SQL: INSERT INTO USERM (id,uname, email, passw) VALUES ('123e4567-e89b-12d3-a456-426614174001','John Doe', 'john.doe@example.com', 'password123'), ('123e4567-e89b-12d3-a456-426614174002','Alice Smith', 'alice.smith@example.com', 'securepass'), ('123e4567-e89b-12d3-a456-426614174003','Bob Johnson', 'bob.johnson@example.com', 'mysecretpassword')
+2025-02-10T10:18:49.734-05:00 DEBUG 68322 --- [main] o.s.jdbc.datasource.init.ScriptUtils     : 6 returned as update count for SQL: INSERT INTO PHONE (pnumber, city_code, country_code, user_id) VALUES ('123-456-7890', 123.45, 1, '123e4567-e89b-12d3-a456-426614174001'), ('987-654-3210', 987.65, 2, '123e4567-e89b-12d3-a456-426614174002'), ('555-123-4567', 555.55, 3, '123e4567-e89b-12d3-a456-426614174003'), ('555-987-6543', 555.98, 1, '123e4567-e89b-12d3-a456-426614174001'), ('222-333-4444', 222.33, 2, '123e4567-e89b-12d3-a456-426614174002'), ('777-888-9999', 777.88, 3, '123e4567-e89b-12d3-a456-426614174003')
+2025-02-10T10:18:49.734-05:00 DEBUG 68322 --- [main] o.s.jdbc.datasource.init.ScriptUtils     : 1 returned as update count for SQL: INSERT INTO CONFIGURATIONAPP (name_parameter, value_parameter) VALUES ('REGEX_PASSWORD', '^(?=.*[A-Z])(?=.*[!@#$%^&*()-+_?])(?=.*\d).{12,}$')
+2025-02-10T10:18:49.735-05:00 DEBUG 68322 --- [main] o.s.jdbc.datasource.init.ScriptUtils     : Executed SQL script from file [/Users/jhonf/Documents/Proyectos/WeAreDev/user-management-main/target/classes/data.sql] in 4 ms.
+2025-02-10T10:18:49.779-05:00  INFO 68322 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-02-10T10:18:49.803-05:00  INFO 68322 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.2.13.Final
+2025-02-10T10:18:49.804-05:00  INFO 68322 --- [main] org.hibernate.cfg.Environment            : HHH000406: Using bytecode reflection optimizer
+2025-02-10T10:18:49.909-05:00  INFO 68322 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-02-10T10:18:50.274-05:00  INFO 68322 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-02-10T10:18:50.288-05:00  INFO 68322 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-02-10T10:18:50.395-05:00  INFO 68322 --- [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-02-10T10:18:50.729-05:00  WARN 68322 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-02-10T10:18:50.780-05:00 DEBUG 68322 --- [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2025-02-10T10:18:50.807-05:00 TRACE 68322 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 
+	c.j.u.c.UserManagementRestController:
+	{GET [/api/v1/user]}: getUsers()
+	{GET [/api/v1/user/{id}]}: getUserById(UUID)
+	{POST [/api/v1/user]}: createUser(User)
+	{PUT [/api/v1/user/{id}]}: updateUser(UUID,User)
+2025-02-10T10:18:50.809-05:00 TRACE 68322 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 
+	o.s.b.a.w.s.e.BasicErrorController:
+	{ [/error]}: error(HttpServletRequest)
+	{ [/error], produces [text/html]}: errorHtml(HttpServletRequest,HttpServletResponse)
+2025-02-10T10:18:50.811-05:00 TRACE 68322 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 
+	o.s.w.a.OpenApiWebMvcResource:
+	{GET [/api-docs], produces [application/json]}: openapiJson(HttpServletRequest,String,Locale)
+	{GET [/api-docs.yaml], produces [application/vnd.oai.openapi]}: openapiYaml(HttpServletRequest,String,Locale)
+2025-02-10T10:18:50.812-05:00 TRACE 68322 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 
+	o.s.w.u.SwaggerWelcomeWebMvc:
+	{GET [/swagger-ui.html]}: redirectToUi(HttpServletRequest)
+2025-02-10T10:18:50.812-05:00 TRACE 68322 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 
+	o.s.w.u.SwaggerConfigResource:
+	{GET [/api-docs/swagger-config], produces [application/json]}: openapiJson(HttpServletRequest)
+2025-02-10T10:18:50.813-05:00 DEBUG 68322 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 10 mappings in 'requestMappingHandlerMapping'
+2025-02-10T10:18:50.816-05:00 DEBUG 68322 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Detected 0 mappings in 'beanNameHandlerMapping'
+2025-02-10T10:18:50.818-05:00 TRACE 68322 --- [main] o.s.w.s.f.support.RouterFunctionMapping  : 0 RouterFunction(s) in 'routerFunctionMapping'
+2025-02-10T10:18:50.821-05:00 TRACE 68322 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped [/webjars/**] onto ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2025-02-10T10:18:50.822-05:00 TRACE 68322 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped [/**] onto ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2025-02-10T10:18:50.822-05:00 TRACE 68322 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped [/swagger-ui*/*swagger-initializer.js] onto ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2025-02-10T10:18:50.822-05:00 TRACE 68322 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped [/swagger-ui*/**] onto ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2025-02-10T10:18:50.822-05:00 DEBUG 68322 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**, /swagger-ui*/*swagger-initializer.js, /swagger-ui*/**] in 'resourceHandlerMapping'
+2025-02-10T10:18:50.826-05:00 DEBUG 68322 --- [main] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 1 @ExceptionHandler, 1 ResponseBodyAdvice
+2025-02-10T10:18:50.901-05:00  INFO 68322 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2025-02-10T10:18:50.901-05:00  INFO 68322 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2025-02-10T10:18:50.902-05:00  INFO 68322 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2025-02-10T10:18:50.906-05:00 TRACE 68322 --- [main] o.s.w.c.s.GenericWebApplicationContext   : Using LifecycleProcessor [org.springframework.context.support.DefaultLifecycleProcessor@62065d12]
+2025-02-10T10:18:50.911-05:00  INFO 68322 --- [main] .j.u.r.UserManagementRestControllerTests : Started UserManagementRestControllerTests in 1.89 seconds (process running for 2.28)
+2025-02-10T10:18:51.206-05:00 TRACE 68322 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.jhoncontreras.usermanagement.controller.UserManagementRestController#getUsers()
+2025-02-10T10:18:51.211-05:00 TRACE 68322 --- [main] o.s.web.method.HandlerMethod             : Arguments: []
+2025-02-10T10:18:51.214-05:00 DEBUG 68322 --- [main] o.s.jdbc.datasource.DataSourceUtils      : Setting JDBC Connection [HikariProxyConnection@639872291 wrapping conn0: url=jdbc:h2:mem:193b1960-a963-43b9-923f-8a02d43aacde user=SA] read-only
+2025-02-10T10:18:51.256-05:00 DEBUG 68322 --- [main] o.s.jdbc.datasource.DataSourceUtils      : Resetting read-only flag of JDBC Connection [HikariProxyConnection@639872291 wrapping conn0: url=jdbc:h2:mem:193b1960-a963-43b9-923f-8a02d43aacde user=SA]
+2025-02-10T10:18:51.271-05:00 DEBUG 68322 --- [main] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2025-02-10T10:18:51.271-05:00 TRACE 68322 --- [main] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [com.jhoncontreras.usermanagement.controller.dto.BaseResponseDto@7a4efee2]
+2025-02-10T10:18:51.280-05:00 TRACE 68322 --- [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : Applying default cacheSeconds=-1
+2025-02-10T10:18:51.302-05:00 TRACE 68322 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.jhoncontreras.usermanagement.controller.UserManagementRestController#updateUser(UUID, User)
+2025-02-10T10:18:51.315-05:00 TRACE 68322 --- [main] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [User [id=123e4567-e89b-12d3-a456-426614174001, name=John Doe Modified, email=john.doe@example.com, phones=[Phone [id=null, number=12345566770, cityCode=COUpdated, countryCode=COUpdated, createdAt=null, updatedAt=null]], createdAt=null, updatedAt=null, lastLogin=null, isActive=false]]
+2025-02-10T10:18:51.316-05:00 TRACE 68322 --- [main] o.s.web.method.HandlerMethod             : Arguments: [123e4567-e89b-12d3-a456-426614174001, User [id=123e4567-e89b-12d3-a456-426614174001, name=John Doe Modified, email=john.doe@example.com, phones=[Phone [id=null, number=12345566770, cityCode=COUpdated, countryCode=COUpdated, createdAt=null, updatedAt=null]], createdAt=null, updatedAt=null, lastLogin=null, isActive=false]]
+2025-02-10T10:18:51.370-05:00 DEBUG 68322 --- [main] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2025-02-10T10:18:51.370-05:00 TRACE 68322 --- [main] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [com.jhoncontreras.usermanagement.controller.dto.BaseResponseDto@ffd26d1]
+2025-02-10T10:18:51.371-05:00 TRACE 68322 --- [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : Applying default cacheSeconds=-1
+2025-02-10T10:18:51.375-05:00 TRACE 68322 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.jhoncontreras.usermanagement.controller.UserManagementRestController#createUser(User)
+2025-02-10T10:18:51.375-05:00 TRACE 68322 --- [main] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [User [id=null, name=John Doe, email=john.doe@example.com, phones=[Phone [id=null, number=1234556677, cityCode=CO, countryCode=CO, createdAt=null, updatedAt=null]], createdAt=null, updatedAt=null, lastLogin=null, isActive=false]]
+2025-02-10T10:18:51.375-05:00 TRACE 68322 --- [main] o.s.web.method.HandlerMethod             : Arguments: [User [id=null, name=John Doe, email=john.doe@example.com, phones=[Phone [id=null, number=1234556677, cityCode=CO, countryCode=CO, createdAt=null, updatedAt=null]], createdAt=null, updatedAt=null, lastLogin=null, isActive=false]]
+2025-02-10T10:18:51.378-05:00 DEBUG 68322 --- [main] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2025-02-10T10:18:51.378-05:00 TRACE 68322 --- [main] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [com.jhoncontreras.usermanagement.controller.dto.BaseResponseDto@64001530]
+2025-02-10T10:18:51.379-05:00 TRACE 68322 --- [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : Applying default cacheSeconds=-1
+2025-02-10T10:18:51.381-05:00 TRACE 68322 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.jhoncontreras.usermanagement.controller.UserManagementRestController#createUser(User)
+2025-02-10T10:18:51.381-05:00 TRACE 68322 --- [main] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [User [id=null, name=John Doe, email=john.doe@example.com, phones=[Phone [id=null, number=1234556677, cityCode=CO, countryCode=CO, createdAt=null, updatedAt=null]], createdAt=null, updatedAt=null, lastLogin=null, isActive=false]]
+2025-02-10T10:18:51.381-05:00 TRACE 68322 --- [main] o.s.web.method.HandlerMethod             : Arguments: [User [id=null, name=John Doe, email=john.doe@example.com, phones=[Phone [id=null, number=1234556677, cityCode=CO, countryCode=CO, createdAt=null, updatedAt=null]], createdAt=null, updatedAt=null, lastLogin=null, isActive=false]]
+2025-02-10T10:18:51.383-05:00 DEBUG 68322 --- [main] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2025-02-10T10:18:51.383-05:00 TRACE 68322 --- [main] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [com.jhoncontreras.usermanagement.controller.dto.BaseResponseDto@4c18b432]
+2025-02-10T10:18:51.383-05:00 TRACE 68322 --- [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : Applying default cacheSeconds=-1
+2025-02-10T10:18:51.385-05:00 TRACE 68322 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.jhoncontreras.usermanagement.controller.UserManagementRestController#createUser(User)
+2025-02-10T10:18:51.385-05:00 TRACE 68322 --- [main] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [User [id=null, name=Jhon Contreras, email=jhon@contreras.com, phones=[Phone [id=null, number=1234556677, cityCode=CO, countryCode=CO, createdAt=null, updatedAt=null]], createdAt=null, updatedAt=null, lastLogin=null, isActive=false]]
+2025-02-10T10:18:51.386-05:00 TRACE 68322 --- [main] o.s.web.method.HandlerMethod             : Arguments: [User [id=null, name=Jhon Contreras, email=jhon@contreras.com, phones=[Phone [id=null, number=1234556677, cityCode=CO, countryCode=CO, createdAt=null, updatedAt=null]], createdAt=null, updatedAt=null, lastLogin=null, isActive=false]]
+2025-02-10T10:18:51.390-05:00 DEBUG 68322 --- [main] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2025-02-10T10:18:51.390-05:00 TRACE 68322 --- [main] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [com.jhoncontreras.usermanagement.controller.dto.BaseResponseDto@4f517209]
+2025-02-10T10:18:51.391-05:00 TRACE 68322 --- [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : Applying default cacheSeconds=-1
+2025-02-10T10:18:51.394-05:00 TRACE 68322 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.jhoncontreras.usermanagement.controller.UserManagementRestController#updateUser(UUID, User)
+2025-02-10T10:18:51.394-05:00 TRACE 68322 --- [main] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [User [id=123e4567-e89b-12d3-a456-426614174001, name=John Doe Modified, email=alice.smith@example.com, phones=[Phone [id=null, number=1234556677Updated, cityCode=COUpdated, countryCode=COUpdated, createdAt=null, updatedAt=null]], createdAt=null, updatedAt=null, lastLogin=null, isActive=false]]
+2025-02-10T10:18:51.394-05:00 TRACE 68322 --- [main] o.s.web.method.HandlerMethod             : Arguments: [123e4567-e89b-12d3-a456-426614174001, User [id=123e4567-e89b-12d3-a456-426614174001, name=John Doe Modified, email=alice.smith@example.com, phones=[Phone [id=null, number=1234556677Updated, cityCode=COUpdated, countryCode=COUpdated, createdAt=null, updatedAt=null]], createdAt=null, updatedAt=null, lastLogin=null, isActive=false]]
+2025-02-10T10:18:51.396-05:00 DEBUG 68322 --- [main] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2025-02-10T10:18:51.396-05:00 TRACE 68322 --- [main] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [com.jhoncontreras.usermanagement.controller.dto.BaseResponseDto@53d782b0]
+2025-02-10T10:18:51.397-05:00 TRACE 68322 --- [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : Applying default cacheSeconds=-1
+2025-02-10T10:18:51.399-05:00 TRACE 68322 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.jhoncontreras.usermanagement.controller.UserManagementRestController#createUser(User)
+2025-02-10T10:18:51.400-05:00  WARN 68322 --- [main] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotReadableException: Required request body is missing: public org.springframework.http.ResponseEntity<com.jhoncontreras.usermanagement.controller.dto.BaseResponseDto<com.jhoncontreras.usermanagement.controller.dto.UserJwtTokenDto>> com.jhoncontreras.usermanagement.controller.UserManagementRestController.createUser(com.jhoncontreras.usermanagement.model.User)]
+2025-02-10T10:18:51.403-05:00 TRACE 68322 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.jhoncontreras.usermanagement.controller.UserManagementRestController#updateUser(UUID, User)
+2025-02-10T10:18:51.403-05:00 TRACE 68322 --- [main] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [User [id=123e4567-e89b-12d3-a456-426614174001, name=John Doe Modified, email=alice.smith@example.com, phones=[Phone [id=null, number=1234556677Updated, cityCode=COUpdated, countryCode=COUpdated, createdAt=null, updatedAt=null]], createdAt=null, updatedAt=null, lastLogin=null, isActive=false]]
+2025-02-10T10:18:51.403-05:00 TRACE 68322 --- [main] o.s.web.method.HandlerMethod             : Arguments: [123e4567-e89b-12d3-a456-426614174001, User [id=123e4567-e89b-12d3-a456-426614174001, name=John Doe Modified, email=alice.smith@example.com, phones=[Phone [id=null, number=1234556677Updated, cityCode=COUpdated, countryCode=COUpdated, createdAt=null, updatedAt=null]], createdAt=null, updatedAt=null, lastLogin=null, isActive=false]]
+2025-02-10T10:18:51.405-05:00 DEBUG 68322 --- [main] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2025-02-10T10:18:51.405-05:00 TRACE 68322 --- [main] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [com.jhoncontreras.usermanagement.controller.dto.BaseResponseDto@500341c4]
+2025-02-10T10:18:51.405-05:00 TRACE 68322 --- [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : Applying default cacheSeconds=-1
+2025-02-10T10:18:51.422-05:00 DEBUG 68322 --- [SpringApplicationShutdownHook] o.s.w.c.s.GenericWebApplicationContext   : Closing org.springframework.web.context.support.GenericWebApplicationContext@1a1d3c1a, started on Mon Feb 10 10:18:49 GMT-05:00 2025
+2025-02-10T10:18:51.424-05:00  INFO 68322 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-02-10T10:18:51.425-05:00  INFO 68322 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-02-10T10:18:51.426-05:00  INFO 68322 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-02-10T10:19:15.463-05:00  INFO 68353 --- [main] .j.u.r.UserManagementRestControllerTests : Starting UserManagementRestControllerTests using Java 23.0.2 with PID 68353 (started by jhonf in /Users/jhonf/Documents/Proyectos/WeAreDev/user-management-main)
+2025-02-10T10:19:15.464-05:00  INFO 68353 --- [main] .j.u.r.UserManagementRestControllerTests : No active profile set, falling back to 1 default profile: "default"
+2025-02-10T10:19:15.475-05:00 TRACE 68353 --- [main] o.s.w.c.s.GenericWebApplicationContext   : Refreshing org.springframework.web.context.support.GenericWebApplicationContext@1a1d3c1a, started on Mon Feb 10 10:19:15 GMT-05:00 2025
+2025-02-10T10:19:15.739-05:00  INFO 68353 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-02-10T10:19:15.762-05:00  INFO 68353 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 20 ms. Found 3 JPA repository interfaces.
+2025-02-10T10:19:15.880-05:00 TRACE 68353 --- [main] o.s.w.c.s.GenericWebApplicationContext   : No 'messageSource' bean, using [Empty MessageSource]
+2025-02-10T10:19:15.881-05:00 TRACE 68353 --- [main] o.s.w.c.s.GenericWebApplicationContext   : No 'applicationEventMulticaster' bean, using [SimpleApplicationEventMulticaster]
+2025-02-10T10:19:15.919-05:00 DEBUG 68353 --- [main] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2025-02-10T10:19:15.919-05:00  INFO 68353 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-02-10T10:19:15.981-05:00  INFO 68353 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:5387ed84-7e65-4aa7-be61-db5f8fc69aa1 user=SA
+2025-02-10T10:19:15.981-05:00  INFO 68353 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-02-10T10:19:15.992-05:00 DEBUG 68353 --- [main] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2025-02-10T10:19:15.992-05:00 DEBUG 68353 --- [main] o.s.jdbc.datasource.init.ScriptUtils     : Executing SQL script from file [/Users/jhonf/Documents/Proyectos/WeAreDev/user-management-main/target/classes/schema.sql]
+2025-02-10T10:19:15.997-05:00 DEBUG 68353 --- [main] o.s.jdbc.datasource.init.ScriptUtils     : 0 returned as update count for SQL: CREATE TABLE USERM ( id uuid DEFAULT random_uuid() PRIMARY KEY, uname VARCHAR(255) NOT NULL, email VARCHAR(255) NOT NULL, passw VARCHAR(500) NOT NULL, created_at timestamp not null default current_timestamp, updated_at timestamp null default current_timestamp, last_login timestamp null default current_timestamp, is_active boolean not null default true )
+2025-02-10T10:19:16.002-05:00 DEBUG 68353 --- [main] o.s.jdbc.datasource.init.ScriptUtils     : 0 returned as update count for SQL: CREATE TABLE PHONE ( id uuid DEFAULT random_uuid() PRIMARY KEY, pnumber VARCHAR(255), city_code VARCHAR(255), country_code VARCHAR(255), user_id UUID NULL, created_at timestamp not null default current_timestamp, updated_at timestamp null default current_timestamp, CONSTRAINT FK_USER_ID FOREIGN KEY (user_id) REFERENCES USERM(id) )
+2025-02-10T10:19:16.002-05:00 DEBUG 68353 --- [main] o.s.jdbc.datasource.init.ScriptUtils     : 0 returned as update count for SQL: CREATE TABLE CONFIGURATIONAPP ( id uuid DEFAULT random_uuid() PRIMARY KEY, name_parameter VARCHAR(255), value_parameter VARCHAR(255) )
+2025-02-10T10:19:16.003-05:00 DEBUG 68353 --- [main] o.s.jdbc.datasource.init.ScriptUtils     : Executed SQL script from file [/Users/jhonf/Documents/Proyectos/WeAreDev/user-management-main/target/classes/schema.sql] in 9 ms.
+2025-02-10T10:19:16.003-05:00 DEBUG 68353 --- [main] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2025-02-10T10:19:16.003-05:00 DEBUG 68353 --- [main] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2025-02-10T10:19:16.003-05:00 DEBUG 68353 --- [main] o.s.jdbc.datasource.init.ScriptUtils     : Executing SQL script from file [/Users/jhonf/Documents/Proyectos/WeAreDev/user-management-main/target/classes/data.sql]
+2025-02-10T10:19:16.005-05:00 DEBUG 68353 --- [main] o.s.jdbc.datasource.init.ScriptUtils     : 3 returned as update count for SQL: INSERT INTO USERM (id,uname, email, passw) VALUES ('123e4567-e89b-12d3-a456-426614174001','John Doe', 'john.doe@example.com', 'password123'), ('123e4567-e89b-12d3-a456-426614174002','Alice Smith', 'alice.smith@example.com', 'securepass'), ('123e4567-e89b-12d3-a456-426614174003','Bob Johnson', 'bob.johnson@example.com', 'mysecretpassword')
+2025-02-10T10:19:16.006-05:00 DEBUG 68353 --- [main] o.s.jdbc.datasource.init.ScriptUtils     : 6 returned as update count for SQL: INSERT INTO PHONE (pnumber, city_code, country_code, user_id) VALUES ('123-456-7890', 123.45, 1, '123e4567-e89b-12d3-a456-426614174001'), ('987-654-3210', 987.65, 2, '123e4567-e89b-12d3-a456-426614174002'), ('555-123-4567', 555.55, 3, '123e4567-e89b-12d3-a456-426614174003'), ('555-987-6543', 555.98, 1, '123e4567-e89b-12d3-a456-426614174001'), ('222-333-4444', 222.33, 2, '123e4567-e89b-12d3-a456-426614174002'), ('777-888-9999', 777.88, 3, '123e4567-e89b-12d3-a456-426614174003')
+2025-02-10T10:19:16.007-05:00 DEBUG 68353 --- [main] o.s.jdbc.datasource.init.ScriptUtils     : 1 returned as update count for SQL: INSERT INTO CONFIGURATIONAPP (name_parameter, value_parameter) VALUES ('REGEX_PASSWORD', '^(?=.*[A-Z])(?=.*[!@#$%^&*()-+_?])(?=.*\d).{12,}$')
+2025-02-10T10:19:16.007-05:00 DEBUG 68353 --- [main] o.s.jdbc.datasource.init.ScriptUtils     : Executed SQL script from file [/Users/jhonf/Documents/Proyectos/WeAreDev/user-management-main/target/classes/data.sql] in 4 ms.
+2025-02-10T10:19:16.045-05:00  INFO 68353 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-02-10T10:19:16.061-05:00  INFO 68353 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.2.13.Final
+2025-02-10T10:19:16.062-05:00  INFO 68353 --- [main] org.hibernate.cfg.Environment            : HHH000406: Using bytecode reflection optimizer
+2025-02-10T10:19:16.154-05:00  INFO 68353 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-02-10T10:19:16.498-05:00  INFO 68353 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-02-10T10:19:16.512-05:00  INFO 68353 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-02-10T10:19:16.621-05:00  INFO 68353 --- [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-02-10T10:19:16.936-05:00  WARN 68353 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-02-10T10:19:16.985-05:00 DEBUG 68353 --- [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2025-02-10T10:19:17.014-05:00 TRACE 68353 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 
+	c.j.u.c.UserManagementRestController:
+	{GET [/api/v1/user]}: getUsers()
+	{GET [/api/v1/user/{id}]}: getUserById(UUID)
+	{POST [/api/v1/user]}: createUser(User)
+	{PUT [/api/v1/user/{id}]}: updateUser(UUID,User)
+2025-02-10T10:19:17.015-05:00 TRACE 68353 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 
+	o.s.b.a.w.s.e.BasicErrorController:
+	{ [/error], produces [text/html]}: errorHtml(HttpServletRequest,HttpServletResponse)
+	{ [/error]}: error(HttpServletRequest)
+2025-02-10T10:19:17.018-05:00 TRACE 68353 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 
+	o.s.w.a.OpenApiWebMvcResource:
+	{GET [/api-docs], produces [application/json]}: openapiJson(HttpServletRequest,String,Locale)
+	{GET [/api-docs.yaml], produces [application/vnd.oai.openapi]}: openapiYaml(HttpServletRequest,String,Locale)
+2025-02-10T10:19:17.018-05:00 TRACE 68353 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 
+	o.s.w.u.SwaggerWelcomeWebMvc:
+	{GET [/swagger-ui.html]}: redirectToUi(HttpServletRequest)
+2025-02-10T10:19:17.018-05:00 TRACE 68353 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 
+	o.s.w.u.SwaggerConfigResource:
+	{GET [/api-docs/swagger-config], produces [application/json]}: openapiJson(HttpServletRequest)
+2025-02-10T10:19:17.019-05:00 DEBUG 68353 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 10 mappings in 'requestMappingHandlerMapping'
+2025-02-10T10:19:17.022-05:00 DEBUG 68353 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Detected 0 mappings in 'beanNameHandlerMapping'
+2025-02-10T10:19:17.024-05:00 TRACE 68353 --- [main] o.s.w.s.f.support.RouterFunctionMapping  : 0 RouterFunction(s) in 'routerFunctionMapping'
+2025-02-10T10:19:17.028-05:00 TRACE 68353 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped [/webjars/**] onto ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2025-02-10T10:19:17.028-05:00 TRACE 68353 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped [/**] onto ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2025-02-10T10:19:17.029-05:00 TRACE 68353 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped [/swagger-ui*/*swagger-initializer.js] onto ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2025-02-10T10:19:17.029-05:00 TRACE 68353 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped [/swagger-ui*/**] onto ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2025-02-10T10:19:17.029-05:00 DEBUG 68353 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**, /swagger-ui*/*swagger-initializer.js, /swagger-ui*/**] in 'resourceHandlerMapping'
+2025-02-10T10:19:17.032-05:00 DEBUG 68353 --- [main] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 1 @ExceptionHandler, 1 ResponseBodyAdvice
+2025-02-10T10:19:17.122-05:00  INFO 68353 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2025-02-10T10:19:17.122-05:00  INFO 68353 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2025-02-10T10:19:17.123-05:00  INFO 68353 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2025-02-10T10:19:17.127-05:00 TRACE 68353 --- [main] o.s.w.c.s.GenericWebApplicationContext   : Using LifecycleProcessor [org.springframework.context.support.DefaultLifecycleProcessor@2d12a71f]
+2025-02-10T10:19:17.133-05:00  INFO 68353 --- [main] .j.u.r.UserManagementRestControllerTests : Started UserManagementRestControllerTests in 1.782 seconds (process running for 2.151)
+2025-02-10T10:19:17.418-05:00 TRACE 68353 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.jhoncontreras.usermanagement.controller.UserManagementRestController#getUsers()
+2025-02-10T10:19:17.423-05:00 TRACE 68353 --- [main] o.s.web.method.HandlerMethod             : Arguments: []
+2025-02-10T10:19:17.426-05:00 DEBUG 68353 --- [main] o.s.jdbc.datasource.DataSourceUtils      : Setting JDBC Connection [HikariProxyConnection@585691212 wrapping conn0: url=jdbc:h2:mem:5387ed84-7e65-4aa7-be61-db5f8fc69aa1 user=SA] read-only
+2025-02-10T10:19:17.463-05:00 DEBUG 68353 --- [main] o.s.jdbc.datasource.DataSourceUtils      : Resetting read-only flag of JDBC Connection [HikariProxyConnection@585691212 wrapping conn0: url=jdbc:h2:mem:5387ed84-7e65-4aa7-be61-db5f8fc69aa1 user=SA]
+2025-02-10T10:19:17.477-05:00 DEBUG 68353 --- [main] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2025-02-10T10:19:17.477-05:00 TRACE 68353 --- [main] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [com.jhoncontreras.usermanagement.controller.dto.BaseResponseDto@5f2312f3]
+2025-02-10T10:19:17.486-05:00 TRACE 68353 --- [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : Applying default cacheSeconds=-1
+2025-02-10T10:19:17.507-05:00 TRACE 68353 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.jhoncontreras.usermanagement.controller.UserManagementRestController#updateUser(UUID, User)
+2025-02-10T10:19:17.520-05:00 TRACE 68353 --- [main] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [User [id=123e4567-e89b-12d3-a456-426614174001, name=John Doe Modified, email=john.doe@example.com, phones=[Phone [id=null, number=12345566770, cityCode=COUpdated, countryCode=COUpdated, createdAt=null, updatedAt=null]], createdAt=null, updatedAt=null, lastLogin=null, isActive=false]]
+2025-02-10T10:19:17.521-05:00 TRACE 68353 --- [main] o.s.web.method.HandlerMethod             : Arguments: [123e4567-e89b-12d3-a456-426614174001, User [id=123e4567-e89b-12d3-a456-426614174001, name=John Doe Modified, email=john.doe@example.com, phones=[Phone [id=null, number=12345566770, cityCode=COUpdated, countryCode=COUpdated, createdAt=null, updatedAt=null]], createdAt=null, updatedAt=null, lastLogin=null, isActive=false]]
+2025-02-10T10:19:17.579-05:00 DEBUG 68353 --- [main] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2025-02-10T10:19:17.579-05:00 TRACE 68353 --- [main] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [com.jhoncontreras.usermanagement.controller.dto.BaseResponseDto@6dc010a2]
+2025-02-10T10:19:17.580-05:00 TRACE 68353 --- [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : Applying default cacheSeconds=-1
+2025-02-10T10:19:17.584-05:00 TRACE 68353 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.jhoncontreras.usermanagement.controller.UserManagementRestController#createUser(User)
+2025-02-10T10:19:17.584-05:00 TRACE 68353 --- [main] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [User [id=null, name=John Doe, email=john.doe@example.com, phones=[Phone [id=null, number=1234556677, cityCode=CO, countryCode=CO, createdAt=null, updatedAt=null]], createdAt=null, updatedAt=null, lastLogin=null, isActive=false]]
+2025-02-10T10:19:17.584-05:00 TRACE 68353 --- [main] o.s.web.method.HandlerMethod             : Arguments: [User [id=null, name=John Doe, email=john.doe@example.com, phones=[Phone [id=null, number=1234556677, cityCode=CO, countryCode=CO, createdAt=null, updatedAt=null]], createdAt=null, updatedAt=null, lastLogin=null, isActive=false]]
+2025-02-10T10:19:17.587-05:00 DEBUG 68353 --- [main] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2025-02-10T10:19:17.587-05:00 TRACE 68353 --- [main] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [com.jhoncontreras.usermanagement.controller.dto.BaseResponseDto@1f299fc3]
+2025-02-10T10:19:17.587-05:00 TRACE 68353 --- [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : Applying default cacheSeconds=-1
+2025-02-10T10:19:17.590-05:00 TRACE 68353 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.jhoncontreras.usermanagement.controller.UserManagementRestController#createUser(User)
+2025-02-10T10:19:17.590-05:00 TRACE 68353 --- [main] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [User [id=null, name=John Doe, email=john.doe@example.com, phones=[Phone [id=null, number=1234556677, cityCode=CO, countryCode=CO, createdAt=null, updatedAt=null]], createdAt=null, updatedAt=null, lastLogin=null, isActive=false]]
+2025-02-10T10:19:17.590-05:00 TRACE 68353 --- [main] o.s.web.method.HandlerMethod             : Arguments: [User [id=null, name=John Doe, email=john.doe@example.com, phones=[Phone [id=null, number=1234556677, cityCode=CO, countryCode=CO, createdAt=null, updatedAt=null]], createdAt=null, updatedAt=null, lastLogin=null, isActive=false]]
+2025-02-10T10:19:17.592-05:00 DEBUG 68353 --- [main] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2025-02-10T10:19:17.592-05:00 TRACE 68353 --- [main] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [com.jhoncontreras.usermanagement.controller.dto.BaseResponseDto@2092b072]
+2025-02-10T10:19:17.593-05:00 TRACE 68353 --- [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : Applying default cacheSeconds=-1
+2025-02-10T10:19:17.595-05:00 TRACE 68353 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.jhoncontreras.usermanagement.controller.UserManagementRestController#createUser(User)
+2025-02-10T10:19:17.595-05:00 TRACE 68353 --- [main] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [User [id=null, name=Jhon Contreras, email=jhon@contreras.com, phones=[Phone [id=null, number=1234556677, cityCode=CO, countryCode=CO, createdAt=null, updatedAt=null]], createdAt=null, updatedAt=null, lastLogin=null, isActive=false]]
+2025-02-10T10:19:17.595-05:00 TRACE 68353 --- [main] o.s.web.method.HandlerMethod             : Arguments: [User [id=null, name=Jhon Contreras, email=jhon@contreras.com, phones=[Phone [id=null, number=1234556677, cityCode=CO, countryCode=CO, createdAt=null, updatedAt=null]], createdAt=null, updatedAt=null, lastLogin=null, isActive=false]]
+2025-02-10T10:19:17.601-05:00 DEBUG 68353 --- [main] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2025-02-10T10:19:17.601-05:00 TRACE 68353 --- [main] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [com.jhoncontreras.usermanagement.controller.dto.BaseResponseDto@6044311a]
+2025-02-10T10:19:17.601-05:00 TRACE 68353 --- [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : Applying default cacheSeconds=-1
+2025-02-10T10:19:17.604-05:00 TRACE 68353 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.jhoncontreras.usermanagement.controller.UserManagementRestController#updateUser(UUID, User)
+2025-02-10T10:19:17.604-05:00 TRACE 68353 --- [main] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [User [id=123e4567-e89b-12d3-a456-426614174001, name=John Doe Modified, email=alice.smith@example.com, phones=[Phone [id=null, number=1234556677Updated, cityCode=COUpdated, countryCode=COUpdated, createdAt=null, updatedAt=null]], createdAt=null, updatedAt=null, lastLogin=null, isActive=false]]
+2025-02-10T10:19:17.605-05:00 TRACE 68353 --- [main] o.s.web.method.HandlerMethod             : Arguments: [123e4567-e89b-12d3-a456-426614174001, User [id=123e4567-e89b-12d3-a456-426614174001, name=John Doe Modified, email=alice.smith@example.com, phones=[Phone [id=null, number=1234556677Updated, cityCode=COUpdated, countryCode=COUpdated, createdAt=null, updatedAt=null]], createdAt=null, updatedAt=null, lastLogin=null, isActive=false]]
+2025-02-10T10:19:17.606-05:00 DEBUG 68353 --- [main] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2025-02-10T10:19:17.607-05:00 TRACE 68353 --- [main] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [com.jhoncontreras.usermanagement.controller.dto.BaseResponseDto@21304869]
+2025-02-10T10:19:17.607-05:00 TRACE 68353 --- [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : Applying default cacheSeconds=-1
+2025-02-10T10:19:17.609-05:00 TRACE 68353 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.jhoncontreras.usermanagement.controller.UserManagementRestController#createUser(User)
+2025-02-10T10:19:17.610-05:00  WARN 68353 --- [main] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotReadableException: Required request body is missing: public org.springframework.http.ResponseEntity<com.jhoncontreras.usermanagement.controller.dto.BaseResponseDto<com.jhoncontreras.usermanagement.controller.dto.UserJwtTokenDto>> com.jhoncontreras.usermanagement.controller.UserManagementRestController.createUser(com.jhoncontreras.usermanagement.model.User)]
+2025-02-10T10:19:17.612-05:00 TRACE 68353 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.jhoncontreras.usermanagement.controller.UserManagementRestController#updateUser(UUID, User)
+2025-02-10T10:19:17.613-05:00 TRACE 68353 --- [main] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [User [id=123e4567-e89b-12d3-a456-426614174001, name=John Doe Modified, email=alice.smith@example.com, phones=[Phone [id=null, number=1234556677Updated, cityCode=COUpdated, countryCode=COUpdated, createdAt=null, updatedAt=null]], createdAt=null, updatedAt=null, lastLogin=null, isActive=false]]
+2025-02-10T10:19:17.613-05:00 TRACE 68353 --- [main] o.s.web.method.HandlerMethod             : Arguments: [123e4567-e89b-12d3-a456-426614174001, User [id=123e4567-e89b-12d3-a456-426614174001, name=John Doe Modified, email=alice.smith@example.com, phones=[Phone [id=null, number=1234556677Updated, cityCode=COUpdated, countryCode=COUpdated, createdAt=null, updatedAt=null]], createdAt=null, updatedAt=null, lastLogin=null, isActive=false]]
+2025-02-10T10:19:17.614-05:00 DEBUG 68353 --- [main] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2025-02-10T10:19:17.614-05:00 TRACE 68353 --- [main] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [com.jhoncontreras.usermanagement.controller.dto.BaseResponseDto@614427b2]
+2025-02-10T10:19:17.615-05:00 TRACE 68353 --- [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : Applying default cacheSeconds=-1
+2025-02-10T10:19:17.633-05:00 DEBUG 68353 --- [SpringApplicationShutdownHook] o.s.w.c.s.GenericWebApplicationContext   : Closing org.springframework.web.context.support.GenericWebApplicationContext@1a1d3c1a, started on Mon Feb 10 10:19:15 GMT-05:00 2025
+2025-02-10T10:19:17.634-05:00  INFO 68353 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-02-10T10:19:17.635-05:00  INFO 68353 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-02-10T10:19:17.636-05:00  INFO 68353 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
