@@ -32,7 +32,7 @@ Para ejecutar el proyecto, sigue estos pasos:
    
    ``java -jar usermanagement-0.0.1-SNAPSHOT.jar``
 
-# 📦 User Management API - Docker Deployment Guide
+# 📦 User Management API - Docker Guia Deplyment
 
 A continuación, encontrarás los pasos para ejecutar la aplicación dentro de un contenedor Docker.
 
@@ -46,7 +46,7 @@ Para ello, asegúrate de estar en la raíz del proyecto (donde está el "Dockerf
 
 Una vez construida la imagen, puedes ejecutar el contenedor con:
 
-``sdocker run -d -p 5050:5050 --name user-management-app user-management:1.0``
+``docker run -d -p 5050:5050 --name user-management-app user-management:1.0``
 
 ## Patrones de Diseño Utilizados
 
